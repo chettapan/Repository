@@ -1,4 +1,4 @@
-# onevue
+# Repository
 
 ## Project setup
 ```
