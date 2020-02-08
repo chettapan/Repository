@@ -10,6 +10,11 @@ import "./css/loginmain.css";
 import "./css/loginstyle.css";
 import "./css/util.css";
 
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios, axios)
+
 
 window.$ = window.jQuery = jQuery;
 

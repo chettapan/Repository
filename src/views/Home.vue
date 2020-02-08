@@ -38,9 +38,11 @@
 					</div>
 
 					<div class="form-row">
-						<button class="login100-form-btn">
+						<router-link :to="{name: ''}">
+							 <button class="login100-form-btn" @click="addTicket">
 							Login
-						</button>
+						</button>							 
+						 </router-link>
 
 						 <!-- <button class="login101-form-btn">Register</button> -->
 						 <router-link :to="{name: 'Register'}">
@@ -49,7 +51,8 @@
 					</div>	
 					
 				</form>
-				
+
+							
 			</div>
 		</div>
 	</div>
@@ -60,7 +63,16 @@
 export default {
   name: "home",
   components: {
-  }
+  },
+  methods: {
+       addTicket() {
+             let uri = 'http://localhost:4000/tickets/add';
+            this.axios.post(uri, this.ticket).then((response) => {
+				// eslint-disable-next-line no-console
+               console.log(response);
+            });
+       }
+    }
 };
 
 </script>
