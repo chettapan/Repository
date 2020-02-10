@@ -9,16 +9,16 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" v-on:submit.prevent="login">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text"  placeholder="Enter username">
+						<span class="label-input100">Email Address</span>
+						<input class="input100" type="text" v-model="email" name="email"  placeholder="Enter email">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" placeholder="Enter password">
+						<input class="input100" type="password" v-model="password" name="password" placeholder="Enter password">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -38,16 +38,14 @@
 					</div>
 
 					<div class="form-row">
-						<router-link :to="{name: ''}">
-							 <button class="login100-form-btn" @click="addTicket">
-							Login
-						</button>							 
-						 </router-link>
+					
+							 <button class="login100-form-btn" type="submit">Login</button>							 
+						
 
 						 <!-- <button class="login101-form-btn">Register</button> -->
-						 <router-link :to="{name: 'Register'}">
+						 <!-- <router-link :to="{name: 'Register'}">
 							 <button class="login101-form-btn">Register</button>							 
-						 </router-link>
+						 </router-link> -->
 					</div>	
 					
 				</form>
@@ -60,19 +58,36 @@
 </template>
 
 <script>
+// eslint-disable-next-line
+import axios from 'axios'
+import router from '../router'
+import EventBus from './EventBus'
 export default {
-  name: "home",
-  components: {
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
   },
   methods: {
-       addTicket() {
-             let uri = 'http://localhost:4000/tickets/add';
-            this.axios.post(uri, this.ticket).then((response) => {
-				// eslint-disable-next-line no-console
-               console.log(response);
-            });
-       }
+    login () {
+      axios.post('http://localhost:5000/users/login', {
+        email: this.email,
+        password: this.password
+      }).then(res => {
+        localStorage.setItem('usertoken', res.data)
+        this.email = ''
+        this.password = ''
+        router.push({ name: 'Profile' })
+      }).catch(err => {
+          // eslint-disable-next-line
+        console.log(err)
+      })
+      this.emitMethod()
+    },
+    emitMethod () {
+      EventBus.$emit('logged-in', 'loggedin')
     }
-};
-
+  }
+}
 </script>

@@ -9,6 +9,7 @@ import jQuery from "jquery";
 import "./css/loginmain.css";
 import "./css/loginstyle.css";
 import "./css/util.css";
+require('../node_modules/bootstrap/dist/css/bootstrap.css')
 
 import axios from 'axios';
 import VueAxios from 'vue-axios';
