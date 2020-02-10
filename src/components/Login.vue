@@ -69,6 +69,11 @@ export default {
       password: ''
     }
   },
+  computed:{
+      compareEmail () {
+          return this.email !== this.email ? 'Email not true': ''
+      }
+  },
   methods: {
     login () {
       axios.post('http://localhost:5000/users/login', {

@@ -12,7 +12,7 @@
 				<form class="login100-form validate-form" v-on:submit.prevent="register">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">First Name</span>
-						<input class="input100" v-model="first_name" type="text" name="first_name" placeholder="Enter username">
+						<input class="input100" v-model="first_name" type="text" name="first_name" placeholder="Enter First Name">
 						<span class="focus-input100"></span>
 					</div>
 
