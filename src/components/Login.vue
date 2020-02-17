@@ -69,22 +69,29 @@ export default {
       password: ''
     }
   },
-  computed:{
-      compareEmail () {
-          return this.email !== this.email ? 'Email not true': ''
-      }
-  },
   methods: {
     login () {
       axios.post('http://localhost:5000/users/login', {
         email: this.email,
         password: this.password
       }).then(res => {
-        localStorage.setItem('usertoken', res.data)
-        this.email = ''
-        this.password = ''
-        router.push({ name: 'Profile' })
+		if (res.data){
+			const token = res.data;
+			// const user = res.data.user;
+			 localStorage.setItem('usertoken', token)
+        	// this.email = ''
+			// this.password = ''
+			router.push({ name: 'ChatApp' })
+		}
+		alert("Success")
+		// eslint-disable-next-line
+		console.log(res.data,"resdata")
+        // localStorage.setItem('usertoken', res.data)
+        // this.email = ''
+        // this.password = ''
+        // router.push({ name: 'Profile' })
       }).catch(err => {
+		  alert("error")
           // eslint-disable-next-line
         console.log(err)
       })

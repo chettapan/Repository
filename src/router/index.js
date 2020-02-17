@@ -3,7 +3,8 @@ import Router from "vue-router";
 import Home from "../components/Home";
 import Register from "../components/Register";
 import Login from "../components/Login";
-import Profile from '../components/Profile'
+// import Profile from '../components/Profile'
+import ChatApp from "../components/ChatApp";
 
 Vue.use(Router);
 
@@ -25,9 +26,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile
+      path: '/chatapp',
+      name: 'ChatApp',
+      component: ChatApp
     }
   ]
 })

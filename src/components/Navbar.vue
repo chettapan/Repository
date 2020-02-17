@@ -17,7 +17,7 @@
                     <router-link class="nav-link" to="/register">Register</router-link>
                 </li>
                 <li  v-if="auth=='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/profile">Profile</router-link>
+                    <router-link class="nav-link" to="/chatapp">ChatApp</router-link>
                 </li>
                 <li  v-if="auth=='loggedin'" class="nav-item">
                     <a class="nav-link" href="" v-on:click="logout">Logout</a>

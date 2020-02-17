@@ -31,10 +31,16 @@ export default {
     const token = localStorage.usertoken
     const decoded = jwtDecode(token)
     return {
+      userdata: localStorage.getItem("usertoken"),
       first_name: decoded.first_name,
       last_name: decoded.last_name,
       email: decoded.email
     }
+
+  },
+  created(){
+      // eslint-disable-next-line
+    console.log("Profile/ToKen:",this.userdata)
   }
 }
 </script>
