@@ -21,6 +21,7 @@
                 </li>
                 <li  v-if="auth=='loggedin'" class="nav-item">
                     <a class="nav-link" href="" v-on:click="logout">Logout</a>
+                    <!-- ffff -->
                 </li>
             </ul>
         </div>
