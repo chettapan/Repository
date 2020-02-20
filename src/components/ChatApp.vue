@@ -5,6 +5,7 @@
 			<p class="username">Username: {{ username }}</p>
 			<p class="online">Online: {{ users.length }}</p>
 		</div>
+
 		<ChatRoom v-bind:messages="messages" v-on:sendMessage="this.sendMessage" />
 	</div>
 </template>
@@ -13,6 +14,7 @@
 import io from 'socket.io-client';
 import ChatRoom from './Chatroom';
 import jwtDecode from 'jwt-decode';
+
 
 export default {
 	name: 'app',
@@ -36,39 +38,43 @@ export default {
 	methods: {
 		joinServer: function () {
             
-			this.socket.on('loggedIn', data => {
-				this.messages = data.messages;
-				this.users = data.users;
 				this.socket.emit('newuser', this.username);
-			});
+			},
 
-			this.listen();
-		},
-		listen: function () {
-			this.socket.on('userOnline', user => {
-				this.users.push(user);
-			});
-			this.socket.on('userLeft', user => {
-				this.users.splice(this.users.indexOf(user), 1);
-			});
-			this.socket.on('msg', message => {
-				this.messages.push(message);
-			});
-		},
 		sendMessage: function (message) {
 			this.socket.emit('msg', message);
 		}
 	},
 	mounted: function () {
         
-		// this.username = prompt("What is your username?", "Anonymous");
-
-		// if (!this.username) {
-		// 	this.username = "Anonymous";
-		// }
+		this.socket.on('loggedIn', data => {
+			// eslint-disable-next-line
+			console.log('loggedIn',data.username)
+			this.messages = data.messages;
+			this.users = data.users;
+		});
 
 		this.joinServer();
+
+		this.socket.on('userOnline', user => {
+				// eslint-disable-next-line
+				console.log('userOnline')
+				this.users.push(user);
+		});
+
+		this.socket.on('userLeft', user => {
+				// eslint-disable-next-line
+				console.log('userLeft')
+				this.users.splice(this.users.indexOf(user), 1);
+		});
+		this.socket.on('msg', message => {
+				// eslint-disable-next-line
+				console.log('msg')
+				this.messages.push(message);
+		});
+	
 	}
+	 
 }
 </script>
 
