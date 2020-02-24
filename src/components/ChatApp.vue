@@ -4,6 +4,8 @@
 			<h1>Chatroom</h1>
 			<p class="username">Username: {{ username }}</p>
 			<p class="online">Online: {{ users.length }}</p>
+			<p class="online">Online: {{ users }}</p>
+
 		</div>
 
 		<ChatRoom v-bind:messages="messages" v-on:sendMessage="this.sendMessage" />

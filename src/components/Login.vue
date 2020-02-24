@@ -81,7 +81,7 @@ export default {
 			 localStorage.setItem('usertoken', token)
         	// this.email = ''
 			// this.password = ''
-			router.push({ name: 'ChatApp' })
+			router.push({ name: 'NewChat' })
 		}
 		alert("Success")
 		// eslint-disable-next-line

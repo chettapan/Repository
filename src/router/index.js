@@ -4,12 +4,14 @@ import Home from "../components/Home";
 import Register from "../components/Register";
 import Login from "../components/Login";
 // import Profile from '../components/Profile'
-import ChatApp from "../components/ChatApp";
+// import ChatApp from "../components/ChatApp";
+import NewChat from "../components/NewChat";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    
     {
       path: '/',
       name: 'Home',
@@ -26,9 +28,14 @@ export default new Router({
       component: Register
     },
     {
-      path: '/chatapp',
-      name: 'ChatApp',
-      component: ChatApp
+      path: '/',
+      name: 'NewChat',
+      component: NewChat
     }
+    // {
+    //   path: '/chatapp',
+    //   name: 'ChatApp',
+    //   component: ChatApp
+    // }
   ]
 })
