@@ -7,9 +7,9 @@
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbar1">
               <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- <li v-if="auth=='loggedin'" class="nav-item">
                     <router-link class="nav-link" to="/">Home</router-link>
-                </li>
+                </li> -->
                 <li v-if="auth==''" class="nav-item">
                     <router-link class="nav-link" to="/login">Login</router-link>
                 </li>
@@ -17,7 +17,7 @@
                     <router-link class="nav-link" to="/register">Register</router-link>
                 </li>
                 <li  v-if="auth=='loggedin'" class="nav-item">
-                    <router-link class="nav-link" to="/chatapp">ChatApp</router-link>
+                    <router-link class="nav-link" to="/newchat">ChatApp</router-link>
                 </li>
                 <li  v-if="auth=='loggedin'" class="nav-item">
                     <a class="nav-link" href="" v-on:click="logout">Logout</a>

@@ -3,15 +3,15 @@
 <body>
     <div class="containerx clearfix">
         <div class="people-list" id="people-list">
-            <div class="search">
+            <!-- <div class="search">
                 <input type="text" placeholder="search" />
                 <i class="fa fa-search"></i>
-            </div>
-            <ul class="list">
-                <li class="clearfix">
+            </div> -->
+            <ul class="list" >
+                <li class="clearfix" v-for="message in users" v-bind:key="message._id">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
                 <div class="about">
-                    <div class="username">{{ username }}</div>
+                    <div class="username" >{{ message }}</div>
                     <div class="status">
                     <i class="far fa-circle online"></i>😘 online
                     </div>

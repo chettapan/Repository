@@ -56,9 +56,14 @@ export default {
 			}
 
 			this.$emit('sendMessage', this.msg);
-			this.msg = "";
-		}
-	}
+      this.msg = "";
+    }
+    
+    
+  },
+  mounted: function () {
+    this.scrollToEnd()
+  }
 }
 </script>
 
